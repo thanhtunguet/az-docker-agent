@@ -1,12 +1,15 @@
 Azure Devops Agent
 ==================
 
+# Prerequisites
+- Docker installed
+
 # Usage:
 
 ## Build the image
 
 ```bash
-docker build -t thanhtunguet/azure-devops-agent:latest
+docker build -t thanhtunguet/azure-devops-agent:latest .
 ```
 
 ## Start image
@@ -18,10 +21,12 @@ docker-compose up -d
 ## Environment variables
 
 ```env
-AZP_URL=https://devops.rangdong2020.ml # Azure Devops Server URL
-AZP_TOKEN= # Azure Devops Personal Access Token
-AZP_AGENT_NAME=Dotnet Agent # Agent Name
-AZP_POOL=Dev # Agent Pool
+AZP_URL=
+AZP_TOKEN=
+AZP_AGENT_NAME=
+AZP_POOL=
 AZP_WORK=_work
-AZP_TARGET_SERVER=dev.rangdong2020.ml # The target server which agent will ssh to
 ```
+
+
+&copy; 2020 thanhtunguet <ht@thanhtunguet.info>
