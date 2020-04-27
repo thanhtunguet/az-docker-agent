@@ -16,8 +16,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
-        export DOCKER_USERNAME="${{secret.docker_username}}"
-        export DOCKER_PASSWORD="${{secret.docker_password}}"
+        export DOCKER_USERNAME="${{ secret.docker_username }}"
+        export DOCKER_PASSWORD="${{ secret.docker_password }}"
         docker build . --file Dockerfile --tag thanhtunguet/azure-devops-agent:latest
-        eval `echo ${DOCKER_PASSWORD}` | docker login --username ${DOCKER_USERNAME} --password-stdin
+        eval `echo "${DOCKER_PASSWORD}"` | docker login --username "${DOCKER_USERNAME}" --password-stdin
         docker push thanhtunguet/azure-devops-agent:latest
