@@ -11,11 +11,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: ${{secret.docker_username}}
+      DOCKER_PASSWORD: ${{secret.docker_password}}
 
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag thanhtunguet/azure-devops-agent:latest
-        echo {{secret.docker_password}} | docker login --username {{secret.docker_username}} --password-stdin
+        eval `echo ${DOCKER_PASSWORD}` | docker login --username ${DOCKER_USERNAME} --password-stdin
         docker push thanhtunguet/azure-devops-agent:latest
