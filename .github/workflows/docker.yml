@@ -17,5 +17,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag thanhtunguet/azure-devops-agent:latest
-        eval `echo {{secret.docker_password}}` | docker login --username {{secret.docker_username}} --password-stdin
+        eval `echo ${{secret.docker_password}}` | docker login --username ${{secret.docker_username}} --password-stdin
         docker push thanhtunguet/azure-devops-agent:latest
