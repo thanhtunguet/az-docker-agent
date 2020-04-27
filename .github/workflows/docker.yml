@@ -15,4 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag thanhtunguet/azure-devops-agent:latest && docker login --username {{secret.docker_username}} --password {{secret.docker_password}} && docker push thanhtunguet/azure-devops-agent:latest
+      run: |
+        docker build . --file Dockerfile --tag thanhtunguet/azure-devops-agent:latest
+        echo {{secret.docker_password}} | docker login --username {{secret.docker_username}} --password-stdin
+        docker push thanhtunguet/azure-devops-agent:latest
