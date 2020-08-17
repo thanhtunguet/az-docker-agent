@@ -1,2 +1,2 @@
-docker-compose.override.*
 .env
+docker-compose.override.*

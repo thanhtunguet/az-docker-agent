@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+
 WORKDIR /azp
 USER root
 
@@ -10,6 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb ./
 RUN dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb && rm libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb
 
+# Install APT packages
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes && \
     echo "deb http://security.ubuntu.com/ubuntu xenial-security main" > /etc/apt/sources.list.d/libicu55.list && \
     apt-get update && \
@@ -48,9 +50,9 @@ RUN wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-p
 # Install Docker Compose
 RUN apt-get install docker-compose -y
 
+# Copy startup file
 COPY ./start.sh .
-
 RUN chmod +x start.sh
 
-
+# Agent command
 CMD ["./start.sh"]
