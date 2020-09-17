@@ -2,6 +2,9 @@
 
 set -e
 
+export AZP_AGENT_NAME=$(hostname)
+export AZP_WORK="_works"
+
 if [ -z "$AZP_URL" ]; then
   echo 1>&2 "error: missing AZP_URL environment variable"
   exit 1

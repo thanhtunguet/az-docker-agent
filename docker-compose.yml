@@ -1,11 +1,11 @@
 version: '3'
 services:
   agent:
-    image: thanhtunguet/azure-devops-agent:latest
+    image: thanhtunguet/azure-devops-agent:web
     env_file: .env
     restart: always
     volumes:
-      - "/usr/bin/docker:/usr/bin/docker"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"

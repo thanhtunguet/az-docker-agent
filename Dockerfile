@@ -32,23 +32,7 @@ RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes && \
     gnupg2 \
     wget \
     apt-transport-https \
-    openssh-client
-
-# Add Node.js
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    sh -c "curl -sL https://deb.nodesource.com/setup_13.x | bash -" && \
-    apt-get update && \
-    apt-get install nodejs yarn -y
-
-# Add DotNET
-RUN wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
-    dpkg -i packages-microsoft-prod.deb && \
-    apt-get update && \
-    apt-get install dotnet-sdk-3.1 -y
-
-# Install Docker Compose
-RUN apt-get install docker-compose -y
+    unzip
 
 # Copy startup file
 COPY ./start.sh .
