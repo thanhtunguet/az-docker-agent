@@ -1,7 +1,7 @@
 version: '3'
 services:
   agent:
-    image: thanhtunguet/azure-devops-agent:web
+    image: thanhtunguet/azure-devops-agent:latest
     env_file: .env
     restart: always
     volumes:
